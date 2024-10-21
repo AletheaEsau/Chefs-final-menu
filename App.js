@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, FlatList, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Picker } from '@react-native-picker/picker';
 
 const Stack = createStackNavigator();
+
+// Default Menu Items
+const initialMenuItems = [
+  { id: '1', dishName: 'Bruschetta', description: 'Grilled bread with tomato and basil', course: 'Starters', price: '45' },
+  { id: '2', dishName: 'Caesar Salad', description: 'Classic Caesar with anchovy dressing', course: 'Starters', price: '55' },
+  { id: '3', dishName: 'Grilled Steak', description: 'Served with garlic butter and fries', course: 'Mains', price: '150' },
+  { id: '4', dishName: 'Pasta Alfredo', description: 'Creamy pasta with parmesan', course: 'Mains', price: '120' },
+  { id: '5', dishName: 'Chocolate Cake', description: 'Rich dark chocolate dessert', course: 'Dessert', price: '65' },
+  { id: '6', dishName: 'Tiramisu', description: 'Coffee-flavored Italian dessert', course: 'Dessert', price: '75' },
+];
 
 // Function to calculate the average price of menu items by course
 const calculateAveragePrice = (menuItems, course) => {
@@ -91,7 +101,11 @@ function ManageMenuScreen({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Manage Menu Items</Text>
+      <Image 
+        source={{ uri: 'https://static.vecteezy.com/system/resources/previews/018/733/753/original/add-simple-flat-icon-illustration-vector.jpg' }} 
+        style={styles.logo} 
+      />
+      <Text style={styles.header}>Add Menu Items</Text>
 
       {/* Input fields for new menu item */}
       <TextInput style={styles.input} placeholder="Dish Name" value={dishName} onChangeText={setDishName} />
@@ -182,7 +196,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   header: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 10,
     textAlign: 'center',
@@ -226,7 +240,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#000', // Black buttons
     padding: 10,
-    borderRadius: 10, // Rounded corners for buttons
+    borderRadius: 100, // Rounded corners for buttons
     alignItems: 'center',
     marginVertical: 5,
   },
